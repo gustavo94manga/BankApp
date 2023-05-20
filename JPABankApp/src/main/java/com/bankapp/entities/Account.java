@@ -32,9 +32,9 @@ public class Account {
 	@Column(name = "opened_date")
 	private Date openedDate;
 	
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User userId;
+//	@ManyToOne
+//	@JoinColumn(name = "user_id")
+//	private User user;
 
 	public Account() {
 
@@ -48,13 +48,13 @@ public class Account {
 		this.id = id;
 	}
 
-	public User getUserId() {
-		return userId;
-	}
-
-	public void setUserId(User userId) {
-		this.userId = userId;
-	}
+//	public User getUserId() {
+//		return user;
+//	}
+//
+//	public void setUserId(User userId) {
+//		this.user = userId;
+//	}
 
 	public String getAccountType() {
 		return accountType;

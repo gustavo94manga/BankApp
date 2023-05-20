@@ -28,8 +28,8 @@ public class UserDetail {
 	@Column(name = "date_of_birth")
 	private Date dateOfBirth;
 	
-	 @OneToOne(mappedBy="user")
-	private User user;
+//	 @OneToOne(mappedBy="user")
+//	private User user;
 
 	public UserDetail() {
 		
@@ -51,13 +51,13 @@ public class UserDetail {
 		this.firstName = firstName;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 
 	public String getLastName() {
 		return lastName;

@@ -34,8 +34,8 @@ public class Transaction {
 	
 	private String description;
 	
-	@ManyToMany(mappedBy="transactions")
-	  private List<User> users;
+//	@ManyToMany(mappedBy="transactions")
+//	  private List<User> users;
 
 	public int getId() {
 		return id;
@@ -45,13 +45,13 @@ public class Transaction {
 		this.id = id;
 	}
 
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
+//	public List<User> getUsers() {
+//		return users;
+//	}
+//
+//	public void setUsers(List<User> users) {
+//		this.users = users;
+//	}
 
 	public String getTransactionType() {
 		return transactionType;
