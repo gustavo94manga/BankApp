@@ -32,9 +32,9 @@ public class Account {
 	@Column(name = "opened_date")
 	private Date openedDate;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "user_id")
-//	private User user;
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	public Account() {
 
