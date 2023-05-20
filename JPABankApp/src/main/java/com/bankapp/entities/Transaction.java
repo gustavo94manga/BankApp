@@ -20,10 +20,6 @@ public class Transaction {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="transaction_type")
-	private String transactionType;
-	
-
 	@Column(name="transaction_amount")
 	private double transactionAmount;
 	
@@ -38,14 +34,6 @@ public class Transaction {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getTransactionType() {
-		return transactionType;
-	}
-
-	public void setTransactionType(String transactionType) {
-		this.transactionType = transactionType;
 	}
 
 	public double getTransactionAmount() {
@@ -88,6 +76,17 @@ public class Transaction {
 		Transaction other = (Transaction) obj;
 		return id == other.id;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Transaction [id=").append(id).append(", transactionAmount=").append(transactionAmount)
+				.append(", transactionDate=").append(transactionDate).append(", description=").append(description)
+				.append("]");
+		return builder.toString();
+	}
+	
+	
 
 	
 	
