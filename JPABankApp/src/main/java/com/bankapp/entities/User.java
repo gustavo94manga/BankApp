@@ -55,6 +55,12 @@ public class User {
 	inverseJoinColumns = @JoinColumn(name = "transaction_id"))
 	private List<Transaction> transactions;
 	
+	@ManyToMany
+	@JoinTable(name = "user_has_bank", 
+	joinColumns = @JoinColumn(name = "user_id"), 
+	inverseJoinColumns = @JoinColumn(name = "bank_id"))
+	private List<Bank> banks;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Loan> loans;
@@ -157,6 +163,14 @@ public class User {
 
 	public void setLoans(List<Loan> loans) {
 		this.loans = loans;
+	}
+
+	public List<Bank> getBanks() {
+		return banks;
+	}
+
+	public void setBanks(List<Bank> banks) {
+		this.banks = banks;
 	}
 
 	@Override

@@ -46,5 +46,20 @@ class BankTest {
 		assertNotNull(bank.getName());
 		
 	}
+	
+	@Test
+	void bank_MTM_user() {
+		assertNotNull(bank);
+		assertNotNull(bank.getUsers());
+		assertFalse(bank.getUsers().isEmpty());
+	}
+	
+	@Test
+	void Bank_OTO_BankAddress() {
+		assertNotNull(bank);
+		assertEquals(1, bank.getBankAddress().getId());
+	}
+	
+	
 
 }

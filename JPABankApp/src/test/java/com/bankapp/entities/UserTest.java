@@ -71,6 +71,13 @@ class UserTest {
 		assertNotNull(user);
 		assertFalse(user.getLoans().isEmpty());
 	}
+	
+	@Test
+	void user_MTM_bank() {
+		assertNotNull(user);
+		assertNotNull(user.getBanks());
+		assertFalse(user.getBanks().isEmpty());
+	}
 
 
 }

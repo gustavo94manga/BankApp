@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +26,9 @@ public class BankAddress {
 	
 	@Column(name = "zip_code")
 	private String zipCode;
+	
+	@OneToOne(mappedBy="bankAddress")
+	private Bank bank;
 	
 	public BankAddress() {
 		
@@ -68,6 +72,14 @@ public class BankAddress {
 
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
+	}
+
+	public Bank getBank() {
+		return bank;
+	}
+
+	public void setBank(Bank bank) {
+		this.bank = bank;
 	}
 
 	@Override
