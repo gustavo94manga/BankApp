@@ -47,5 +47,13 @@ class BankAddressTest {
 		assertEquals("Miami", bankAddress.getCity());
 		
 	}
+	
+	@Test
+	void user_OTO_userDetail() {
+		assertNotNull(bankAddress);
+		assertEquals(1, bankAddress.getBank().getId());
+	}
+	
+	
 
 }

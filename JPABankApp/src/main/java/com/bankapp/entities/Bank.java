@@ -1,11 +1,15 @@
 package com.bankapp.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Bank {
@@ -15,6 +19,13 @@ public class Bank {
 	private int id;
 	
 	private String name;
+	
+	@ManyToMany(mappedBy="banks")
+	private List<User> users;
+	
+	@OneToOne
+	@JoinColumn(name = "bank_address_id")
+	private BankAddress bankAddress;
 	
 	public Bank() {
 		
@@ -34,6 +45,22 @@ public class Bank {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	public BankAddress getBankAddress() {
+		return bankAddress;
+	}
+
+	public void setBankAddress(BankAddress bankAddress) {
+		this.bankAddress = bankAddress;
 	}
 
 	@Override
