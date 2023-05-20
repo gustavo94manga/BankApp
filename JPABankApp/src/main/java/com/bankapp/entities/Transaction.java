@@ -40,6 +40,10 @@ public class Transaction {
 	@ManyToOne
 	@JoinColumn(name = "transaction_type_id")
 	private TransactionType transactionType;
+	
+	@ManyToOne
+	@JoinColumn(name = "loan_id")
+	private Loan loan;
 
 	public int getId() {
 		return id;
@@ -97,6 +101,14 @@ public class Transaction {
 
 	public void setTransactionType(TransactionType transactionType) {
 		this.transactionType = transactionType;
+	}
+
+	public Loan getLoan() {
+		return loan;
+	}
+
+	public void setLoan(Loan loan) {
+		this.loan = loan;
 	}
 
 	@Override

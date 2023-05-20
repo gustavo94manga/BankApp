@@ -62,6 +62,14 @@ class TransactionTest {
 		assertEquals(1, transaction.getTransactionType().getId());
 	}
 	
+	@Test
+	void transaction_MTO_loan() {
+		assertNotNull(transaction);
+		assertNotNull(transaction.getLoan());
+		assertEquals("Home", transaction.getLoan().getLoanType());
+		assertEquals(1, transaction.getTransactionType().getId());
+	}
+	
 	
 	
 	
