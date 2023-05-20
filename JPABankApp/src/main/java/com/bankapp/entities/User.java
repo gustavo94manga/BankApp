@@ -1,6 +1,7 @@
 package com.bankapp.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,6 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
@@ -29,7 +37,24 @@ public class User {
 	
 	private boolean enabled;
 	
+	@OneToOne
+    @JoinColumn(name="user_detail_id")
+	private UserDetail userDetailId; 
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "category")
+	private List<Account> userAccounts;
+	
+	@OneToOne
+    @JoinColumn(name="user_address_id")
+	private UserAddress userAddress_id; 
+	
+	
+	@ManyToMany
+	  @JoinTable(name="user_has_transaction", //film_actor
+	    joinColumns=@JoinColumn(name="user_id"),
+	    inverseJoinColumns=@JoinColumn(name="transaction_id"))
+	private List<Transaction> transactions;
 
 	public User() {
 	
@@ -49,6 +74,38 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public UserDetail getUserDetailId() {
+		return userDetailId;
+	}
+
+	public void setUserDetailId(UserDetail userDetailId) {
+		this.userDetailId = userDetailId;
+	}
+
+	public List<Account> getUserAccounts() {
+		return userAccounts;
+	}
+
+	public void setUserAccounts(List<Account> userAccounts) {
+		this.userAccounts = userAccounts;
+	}
+
+	public UserAddress getUserAddress_id() {
+		return userAddress_id;
+	}
+
+	public void setUserAddress_id(UserAddress userAddress_id) {
+		this.userAddress_id = userAddress_id;
+	}
+
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
 	}
 
 	public String getUsername() {

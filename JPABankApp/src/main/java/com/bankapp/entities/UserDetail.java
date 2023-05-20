@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Table(name="user_detail")
@@ -26,6 +27,9 @@ public class UserDetail {
 	
 	@Column(name = "date_of_birth")
 	private Date dateOfBirth;
+	
+	 @OneToOne(mappedBy="user")
+	private User user;
 
 	public UserDetail() {
 		
@@ -45,6 +49,14 @@ public class UserDetail {
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getLastName() {

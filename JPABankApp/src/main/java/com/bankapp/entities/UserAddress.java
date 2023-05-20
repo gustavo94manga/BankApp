@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Table(name = "user_address")
@@ -25,6 +26,9 @@ public class UserAddress {
 	
 	@Column(name = "zip_code")
 	private String zipCode;
+	
+	@OneToOne(mappedBy="address")
+    private User userAddress;
 
 	public UserAddress() {
 
@@ -44,6 +48,14 @@ public class UserAddress {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public User getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(User userAddress) {
+		this.userAddress = userAddress;
 	}
 
 	public String getCity() {

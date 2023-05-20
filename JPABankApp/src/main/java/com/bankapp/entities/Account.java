@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Account {
@@ -29,6 +31,10 @@ public class Account {
 	
 	@Column(name = "opened_date")
 	private Date openedDate;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User userId;
 
 	public Account() {
 
@@ -40,6 +46,14 @@ public class Account {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public User getUserId() {
+		return userId;
+	}
+
+	public void setUserId(User userId) {
+		this.userId = userId;
 	}
 
 	public String getAccountType() {
