@@ -1,6 +1,7 @@
 package com.bankapp.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -46,6 +47,13 @@ class AccountTest {
 		assertEquals("Checking", account.getAccountType());
 		assertEquals(123456789, account.getAccountNumber());
 		assertEquals(50.00, account.getBalance());
+	}
+
+	@Test
+	void account_MTO_user() {
+		assertNotNull(account);
+		assertEquals("Checking", acc)
+	
 	}
 
 }

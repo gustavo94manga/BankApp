@@ -41,9 +41,9 @@ public class User {
 //    @JoinColumn(name="user_detail_id")
 //	private UserDetail userDetailId; 
 //	
-//	@JsonIgnore
-//	@OneToMany(mappedBy = "user")
-//	private List<Account> userAccounts;
+	@JsonIgnore
+	@OneToMany(mappedBy = "user")
+	private List<Account> userAccounts;
 //	
 	@OneToOne
     @JoinColumn(name="user_address_id")

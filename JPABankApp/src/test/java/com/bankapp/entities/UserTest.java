@@ -47,5 +47,11 @@ class UserTest {
 		assertEquals(1, user.getUserAddress().getId());
 	}
 
+	@Test
+	void user_OTM_account() {
+		assertNotNull(user);
+		assertEquals("Checking", user);
+	}
+
 
 }
