@@ -161,7 +161,7 @@ INSERT INTO `user_detail` (`id`, `first_name`, `last_name`, `date_of_birth`) VAL
 INSERT INTO `user_detail` (`id`, `first_name`, `last_name`, `date_of_birth`) VALUES (2, 'Angel', 'Garza', '19900101');
 INSERT INTO `user_detail` (`id`, `first_name`, `last_name`, `date_of_birth`) VALUES (3, 'Edwin', 'Flatto', '19800101');
 INSERT INTO `user_detail` (`id`, `first_name`, `last_name`, `date_of_birth`) VALUES (4, 'Jerry', 'Quintero', '19850101');
-INSERT INTO `user_detail` (`id`, `first_name`, `last_name`, `date_of_birth`) VALUES (5, 'Dominic', 'Dom', '19950101');
+INSERT INTO `user_detail` (`id`, `first_name`, `last_name`, `date_of_birth`) VALUES (5, 'Dominic', 'Surina', '19950101');
 
 COMMIT;
 

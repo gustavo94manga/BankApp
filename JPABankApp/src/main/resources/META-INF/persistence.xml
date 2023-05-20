@@ -6,6 +6,7 @@
 
 	<!--  begin entities  -->
 	<class>com.bankapp.entities.User</class>
+	<class>com.bankapp.entities.UserDetail</class>
 	
 	
 	<!--  end entities  -->
