@@ -1,7 +1,9 @@
 package com.bankapp.entities;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,9 +22,14 @@ public class User {
 	
 	private String password;
 	
+	private String phone;
+	
+	@Column(name="last_login")
+	private LocalDateTime lastLogin;
+	
 	private boolean enabled;
 	
-	private String role;
+	
 
 	public User() {
 	
@@ -60,6 +67,22 @@ public class User {
 		this.password = password;
 	}
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public LocalDateTime getLastLogin() {
+		return lastLogin;
+	}
+
+	public void setLastLogin(LocalDateTime lastLogin) {
+		this.lastLogin = lastLogin;
+	}
+
 	public boolean isEnabled() {
 		return enabled;
 	}
@@ -68,13 +91,7 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public String getRole() {
-		return role;
-	}
 
-	public void setRole(String role) {
-		this.role = role;
-	}
 
 	@Override
 	public int hashCode() {
@@ -97,8 +114,8 @@ public class User {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("User [id=").append(id).append(", email=").append(email).append(", username=").append(username)
-				.append(", password=").append(password).append(", enabled=").append(enabled).append(", role=")
-				.append(role).append("]");
+				.append(", password=").append(password).append(", phone=").append(phone).append(", lastLogin=")
+				.append(lastLogin).append(", enabled=").append(enabled).append("]");
 		return builder.toString();
 	}
 
