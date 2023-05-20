@@ -1,6 +1,8 @@
 package com.bankapp.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,11 +14,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class TransactionTest {
-	
+class TransactionTypeTest {
+
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Transaction transaction;
+	private TransactionType transactionType;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,47 +33,28 @@ class TransactionTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		transaction = em.find(Transaction.class, 1);
+		transactionType = em.find(TransactionType.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		transaction = null;
+		transactionType = null;
 	}
 
 	@Test
-	void testTransactionEntityMapping() {
-		assertNotNull(transaction);
-		assertEquals(transaction.getDescription(),null);
-	
+	void test_TransactionTypeMapping() {
+		assertNotNull(transactionType);
+		assertEquals(10.00, transactionType.getPayment());
+		
 	}
 
 	@Test
-	void transaction_MTM_user() {
-		assertNotNull(transaction);
-		assertEquals(1, transaction.getTransactionAmount());
-		assertFalse(transaction.getUsers().isEmpty());
+	void test_TransactionType_OTM_Transaction() {
+		assertNotNull(transactionType);
+		assertNotNull(transactionType.getTransactions());
+		assertFalse(transactionType.getTransactions().isEmpty());
+		
 	}
 	
-	@Test
-	void transaction_MTO_user() {
-		assertNotNull(transaction);
-		assertNotNull(transaction.getTransactionType());
-		assertEquals(10.00, transaction.getTransactionType().getPayment());
-		assertEquals(1, transaction.getTransactionType().getId());
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

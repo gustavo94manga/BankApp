@@ -9,7 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Transaction {
@@ -34,6 +36,10 @@ public class Transaction {
 	
 	@ManyToMany(mappedBy="transactions")
 	private List<User> users;
+	
+	@ManyToOne
+	@JoinColumn(name = "transaction_type_id")
+	private TransactionType transactionType;
 
 	public int getId() {
 		return id;
@@ -83,6 +89,14 @@ public class Transaction {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	public TransactionType getTransactionType() {
+		return transactionType;
+	}
+
+	public void setTransactionType(TransactionType transactionType) {
+		this.transactionType = transactionType;
 	}
 
 	@Override
