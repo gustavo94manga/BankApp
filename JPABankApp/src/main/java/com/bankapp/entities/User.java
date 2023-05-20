@@ -37,10 +37,10 @@ public class User {
 	
 	private boolean enabled;
 	
-//	@OneToOne
-//    @JoinColumn(name="user_detail_id")
-//	private UserDetail userDetailId; 
-//	
+	@OneToOne
+    @JoinColumn(name="user_detail_id")
+	private UserDetail userDetail; 
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Account> userAccounts;
@@ -60,6 +60,14 @@ public class User {
 		
 	}
 	
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -74,6 +82,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<Account> getUserAccounts() {
+		return userAccounts;
+	}
+
+	public void setUserAccounts(List<Account> userAccounts) {
+		this.userAccounts = userAccounts;
 	}
 
 	public String getUsername() {
