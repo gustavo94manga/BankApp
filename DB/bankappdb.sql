@@ -89,8 +89,8 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `transaction_type` VARCHAR(45) NOT NULL,
   `transaction_amount` DOUBLE NOT NULL,
-  `transaction_date` DATE NOT NULL,
-  `Description` VARCHAR(45) NULL,
+  `transaction_date` DATETIME NOT NULL,
+  `description` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -199,11 +199,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bankappdb`;
-INSERT INTO `transaction` (`id`, `transaction_type`, `transaction_amount`, `transaction_date`, `Description`) VALUES (1, 'Deposit', 1.00, '20230520', NULL);
-INSERT INTO `transaction` (`id`, `transaction_type`, `transaction_amount`, `transaction_date`, `Description`) VALUES (2, 'Withdrawal', 15.00, '20230520', NULL);
-INSERT INTO `transaction` (`id`, `transaction_type`, `transaction_amount`, `transaction_date`, `Description`) VALUES (3, 'Payment', 3.00, '20230519', NULL);
-INSERT INTO `transaction` (`id`, `transaction_type`, `transaction_amount`, `transaction_date`, `Description`) VALUES (4, 'Payment', 8.00, '20230518', NULL);
-INSERT INTO `transaction` (`id`, `transaction_type`, `transaction_amount`, `transaction_date`, `Description`) VALUES (5, 'Deposit', 2.00, '20230521', NULL);
+INSERT INTO `transaction` (`id`, `transaction_type`, `transaction_amount`, `transaction_date`, `description`) VALUES (1, 'Deposit', 1.00, '20230520', NULL);
+INSERT INTO `transaction` (`id`, `transaction_type`, `transaction_amount`, `transaction_date`, `description`) VALUES (2, 'Withdrawal', 15.00, '20230520', NULL);
+INSERT INTO `transaction` (`id`, `transaction_type`, `transaction_amount`, `transaction_date`, `description`) VALUES (3, 'Payment', 3.00, '20230519', NULL);
+INSERT INTO `transaction` (`id`, `transaction_type`, `transaction_amount`, `transaction_date`, `description`) VALUES (4, 'Payment', 8.00, '20230518', NULL);
+INSERT INTO `transaction` (`id`, `transaction_type`, `transaction_amount`, `transaction_date`, `description`) VALUES (5, 'Deposit', 2.00, '20230521', NULL);
 
 COMMIT;
 
