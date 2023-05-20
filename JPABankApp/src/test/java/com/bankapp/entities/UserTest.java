@@ -60,5 +60,11 @@ class UserTest {
 		assertEquals("John", user.getUserDetail().getFirstName());
 	}
 
+	@Test
+	void user_MTM_transaction() {
+		assertNotNull(user);
+		assertFalse(user.getTransactions().isEmpty());
+	}
+
 
 }

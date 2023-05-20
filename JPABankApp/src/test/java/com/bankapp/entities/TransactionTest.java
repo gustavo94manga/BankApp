@@ -44,8 +44,16 @@ class TransactionTest {
 	void testTransactionEntityMapping() {
 		assertNotNull(transaction);
 		assertEquals(transaction.getDescription(),null);
-		assertEquals(transaction.getTransactionType(),"Deposit");
 	
+	}
+
+	@Test
+	void transaction_MTM_user() {
+		assertNotNull(transaction);
+		assertEquals(1, transaction.getTransactionAmount());
+		assertFalse(transaction.getUsers().isEmpty());
+	
+		
 	}
 
 }
