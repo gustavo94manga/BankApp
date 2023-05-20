@@ -19,47 +19,46 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String email;
-	
+
 	private String username;
-	
+
 	private String password;
-	
+
 	private String phone;
-	
-	@Column(name="last_login")
+
+	@Column(name = "last_login")
 	private LocalDateTime lastLogin;
-	
+
 	private boolean enabled;
-	
+
 	@OneToOne
-    @JoinColumn(name="user_detail_id")
-	private UserDetail userDetail; 
-	
+	@JoinColumn(name = "user_detail_id")
+	private UserDetail userDetail;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Account> userAccounts;
-//	
+
 	@OneToOne
-    @JoinColumn(name="user_address_id")
-	private UserAddress userAddress; 
-//	
-//	
-//	@ManyToMany
-//	  @JoinTable(name="user_has_transaction", //film_actor
-//	    joinColumns=@JoinColumn(name="user_id"),
-//	    inverseJoinColumns=@JoinColumn(name="transaction_id"))
-//	private List<Transaction> transactions;
+	@JoinColumn(name = "user_address_id")
+	private UserAddress userAddress;
+
+	@ManyToMany
+	@JoinTable(name = "user_has_transaction", 
+	joinColumns = @JoinColumn(name = "user_id"), 
+	inverseJoinColumns = @JoinColumn(name = "transaction_id"))
+	private List<Transaction> transactions;
 
 	public User() {
-		
+
 	}
-	
+ 
 	public UserDetail getUserDetail() {
 		return userDetail;
 	}
@@ -140,6 +139,14 @@ public class User {
 		this.userAddress = userAddress;
 	}
 
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password + ", phone="
@@ -162,8 +169,5 @@ public class User {
 		User other = (User) obj;
 		return id == other.id;
 	}
-
-	
-	
 
 }

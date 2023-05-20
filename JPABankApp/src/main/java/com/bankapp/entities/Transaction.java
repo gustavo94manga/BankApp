@@ -22,8 +22,6 @@ public class Transaction {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="transaction_type")
-	private String transactionType;
 	
 
 	@Column(name="transaction_amount")
@@ -34,8 +32,8 @@ public class Transaction {
 	
 	private String description;
 	
-//	@ManyToMany(mappedBy="transactions")
-//	  private List<User> users;
+	@ManyToMany(mappedBy="transactions")
+	private List<User> users;
 
 	public int getId() {
 		return id;
@@ -53,13 +51,7 @@ public class Transaction {
 //		this.users = users;
 //	}
 
-	public String getTransactionType() {
-		return transactionType;
-	}
 
-	public void setTransactionType(String transactionType) {
-		this.transactionType = transactionType;
-	}
 
 	public double getTransactionAmount() {
 		return transactionAmount;
@@ -83,6 +75,14 @@ public class Transaction {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	@Override
