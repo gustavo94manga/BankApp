@@ -65,6 +65,12 @@ class UserTest {
 		assertNotNull(user);
 		assertFalse(user.getTransactions().isEmpty());
 	}
+	
+	@Test
+	void user_OTM_loan() {
+		assertNotNull(user);
+		assertFalse(user.getLoans().isEmpty());
+	}
 
 
 }

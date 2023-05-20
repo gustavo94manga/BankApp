@@ -54,6 +54,10 @@ public class User {
 	joinColumns = @JoinColumn(name = "user_id"), 
 	inverseJoinColumns = @JoinColumn(name = "transaction_id"))
 	private List<Transaction> transactions;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "user")
+	private List<Loan> loans;
 
 	public User() {
 
@@ -145,6 +149,14 @@ public class User {
 
 	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
+	}
+
+	public List<Loan> getLoans() {
+		return loans;
+	}
+
+	public void setLoans(List<Loan> loans) {
+		this.loans = loans;
 	}
 
 	@Override

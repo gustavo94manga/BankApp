@@ -48,5 +48,25 @@ class LoanTest {
 		assertEquals(2.5, loan.getInterestRate());
 		
 	}
+	
+	@Test
+	void test_Loan_To_Transaction_OTM() {
+		assertNotNull(loan);
+		assertNotNull(loan.getTransactions());
+		assertFalse(loan.getTransactions().isEmpty());
+		
+	}
 
+	@Test
+	void test_Loan_To_User_MTO() {
+		assertNotNull(loan);
+		assertNotNull(loan.getUser());
+		assertEquals("admin@java.com", loan.getUser().getEmail());
+		assertEquals(1, loan.getUser().getId());
+		
+	}
+	
+	
+	
+	
 }

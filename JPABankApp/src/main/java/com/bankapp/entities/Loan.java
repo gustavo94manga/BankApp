@@ -1,6 +1,7 @@
 package com.bankapp.entities;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,6 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Loan {
@@ -33,6 +39,14 @@ public class Loan {
 	
 	@Column(name = "end_date")
 	private Date endDate;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "loan")
+	private List<Transaction> transactions;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	public Loan() {
 
@@ -92,6 +106,22 @@ public class Loan {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
