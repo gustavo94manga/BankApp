@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,8 +28,10 @@ public class UserAddress {
 	@Column(name = "zip_code")
 	private String zipCode;
 	
-	@OneToOne(mappedBy="address")
-    private User userAddress;
+	
+	
+	@OneToOne(mappedBy="userAddress")
+    private User user;
 
 	public UserAddress() {
 
@@ -48,14 +51,6 @@ public class UserAddress {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	public User getUserAddress() {
-		return userAddress;
-	}
-
-	public void setUserAddress(User userAddress) {
-		this.userAddress = userAddress;
 	}
 
 	public String getCity() {
@@ -82,6 +77,20 @@ public class UserAddress {
 		this.zipCode = zipCode;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return "UserAddress [id=" + id + ", address=" + address + ", city=" + city + ", state=" + state + ", zipCode="
+				+ zipCode + ", user=" + user + "]";
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -99,17 +108,4 @@ public class UserAddress {
 		return id == other.id;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("UserAddress [id=").append(id).append(", address=").append(address).append(", city=")
-				.append(city).append(", state=").append(state).append(", zipCode=").append(zipCode).append("]");
-		return builder.toString();
-	}
-	
-	
-	
-	
-	
-	
 }

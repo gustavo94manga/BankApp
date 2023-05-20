@@ -37,29 +37,29 @@ public class User {
 	
 	private boolean enabled;
 	
-	@OneToOne
-    @JoinColumn(name="user_detail_id")
-	private UserDetail userDetailId; 
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "category")
-	private List<Account> userAccounts;
-	
+//	@OneToOne
+//    @JoinColumn(name="user_detail_id")
+//	private UserDetail userDetailId; 
+//	
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "user")
+//	private List<Account> userAccounts;
+//	
 	@OneToOne
     @JoinColumn(name="user_address_id")
-	private UserAddress userAddress_id; 
-	
-	
-	@ManyToMany
-	  @JoinTable(name="user_has_transaction", //film_actor
-	    joinColumns=@JoinColumn(name="user_id"),
-	    inverseJoinColumns=@JoinColumn(name="transaction_id"))
-	private List<Transaction> transactions;
+	private UserAddress userAddress; 
+//	
+//	
+//	@ManyToMany
+//	  @JoinTable(name="user_has_transaction", //film_actor
+//	    joinColumns=@JoinColumn(name="user_id"),
+//	    inverseJoinColumns=@JoinColumn(name="transaction_id"))
+//	private List<Transaction> transactions;
 
 	public User() {
-	
+		
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -74,38 +74,6 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public UserDetail getUserDetailId() {
-		return userDetailId;
-	}
-
-	public void setUserDetailId(UserDetail userDetailId) {
-		this.userDetailId = userDetailId;
-	}
-
-	public List<Account> getUserAccounts() {
-		return userAccounts;
-	}
-
-	public void setUserAccounts(List<Account> userAccounts) {
-		this.userAccounts = userAccounts;
-	}
-
-	public UserAddress getUserAddress_id() {
-		return userAddress_id;
-	}
-
-	public void setUserAddress_id(UserAddress userAddress_id) {
-		this.userAddress_id = userAddress_id;
-	}
-
-	public List<Transaction> getTransactions() {
-		return transactions;
-	}
-
-	public void setTransactions(List<Transaction> transactions) {
-		this.transactions = transactions;
 	}
 
 	public String getUsername() {
@@ -148,7 +116,19 @@ public class User {
 		this.enabled = enabled;
 	}
 
+	public UserAddress getUserAddress() {
+		return userAddress;
+	}
 
+	public void setUserAddress(UserAddress userAddress) {
+		this.userAddress = userAddress;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password + ", phone="
+				+ phone + ", lastLogin=" + lastLogin + ", enabled=" + enabled + ", userAddress=" + userAddress + "]";
+	}
 
 	@Override
 	public int hashCode() {
@@ -167,18 +147,6 @@ public class User {
 		return id == other.id;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("User [id=").append(id).append(", email=").append(email).append(", username=").append(username)
-				.append(", password=").append(password).append(", phone=").append(phone).append(", lastLogin=")
-				.append(lastLogin).append(", enabled=").append(enabled).append("]");
-		return builder.toString();
-	}
-
-	
-	
-	
 	
 	
 
