@@ -1,12 +1,16 @@
 package com.bankapp.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "transaction_type")
@@ -21,6 +25,11 @@ public class TransactionType {
 	private Double deposit;
 	
 	private Double withdrawal;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "transactionType")
+	private List<Transaction> transactions;
+	
 	
 	public TransactionType() {
 		
@@ -56,6 +65,14 @@ public class TransactionType {
 
 	public void setWithdrawal(Double withdrawal) {
 		this.withdrawal = withdrawal;
+	}
+
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
 	}
 
 	@Override
