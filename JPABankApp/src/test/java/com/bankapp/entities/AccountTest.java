@@ -52,7 +52,7 @@ class AccountTest {
 	@Test
 	void account_MTO_user() {
 		assertNotNull(account);
-		assertEquals("Checking", acc)
+		assertEquals("Checking", account.getAccountType());
 	
 	}
 
