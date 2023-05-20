@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `user_address` (
   `address` VARCHAR(45) NOT NULL,
   `city` VARCHAR(45) NOT NULL,
   `state` VARCHAR(45) NOT NULL,
-  `zip_code` VARCHAR(12) NOT NULL,
+  `zip_code` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -187,8 +187,8 @@ START TRANSACTION;
 USE `bankappdb`;
 INSERT INTO `account` (`id`, `account_type`, `account_number`, `balance`, `account_status`, `opened_date`) VALUES (1, 'Checking', 123456789, 50.00, true, '20230519');
 INSERT INTO `account` (`id`, `account_type`, `account_number`, `balance`, `account_status`, `opened_date`) VALUES (2, 'Savings', 234567899, 25.00, true, '20230518');
-INSERT INTO `account` (`id`, `account_type`, `account_number`, `balance`, `account_status`, `opened_date`) VALUES (3, 'Credit', 345678999, 10.00, false, '20230517');
-INSERT INTO `account` (`id`, `account_type`, `account_number`, `balance`, `account_status`, `opened_date`) VALUES (4, 'Savings', 232425262, 1.00, true, '20230520');
+INSERT INTO `account` (`id`, `account_type`, `account_number`, `balance`, `account_status`, `opened_date`) VALUES (3, 'Credit', 345678999, 10.00, true, '20230517');
+INSERT INTO `account` (`id`, `account_type`, `account_number`, `balance`, `account_status`, `opened_date`) VALUES (4, 'Savings', 232425262, 1.00, false, '20230520');
 INSERT INTO `account` (`id`, `account_type`, `account_number`, `balance`, `account_status`, `opened_date`) VALUES (5, 'Checking', 987654321, 2.00, true, '20230520');
 
 COMMIT;

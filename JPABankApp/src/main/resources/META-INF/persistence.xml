@@ -5,7 +5,10 @@
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 	<!--  begin entities  -->
+	<class>com.bankapp.entities.Account</class>
+	<class>com.bankapp.entities.Loan</class>
 	<class>com.bankapp.entities.User</class>
+	<class>com.bankapp.entities.UserAddress</class>
 	<class>com.bankapp.entities.UserDetail</class>
 	
 	
