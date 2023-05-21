@@ -1,6 +1,7 @@
 package com.bankapp.entities;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -35,6 +38,12 @@ public class Account {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
+	
+	@ManyToMany
+	@JoinTable(name = "transaction_has_account", 
+	joinColumns = @JoinColumn(name = "transaction_id"), 
+	inverseJoinColumns = @JoinColumn(name = "account_id"))
+	private List<Transaction> transactions;
 
 	public Account() {
 
@@ -94,6 +103,22 @@ public class Account {
 
 	public void setOpenedDate(Date openedDate) {
 		this.openedDate = openedDate;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
 	}
 
 	@Override

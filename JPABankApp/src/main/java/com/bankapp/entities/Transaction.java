@@ -44,6 +44,9 @@ public class Transaction {
 	@ManyToOne
 	@JoinColumn(name = "loan_id")
 	private Loan loan;
+	
+	@ManyToMany(mappedBy="transactions")
+	private List<Account> accounts;
 
 	public int getId() {
 		return id;
@@ -109,6 +112,14 @@ public class Transaction {
 
 	public void setLoan(Loan loan) {
 		this.loan = loan;
+	}
+
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
 	}
 
 	@Override
