@@ -9,7 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Bank {
@@ -27,6 +30,12 @@ public class Bank {
 	@JoinColumn(name = "bank_address_id")
 	private BankAddress bankAddress;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "bank")
+	private List<Employee> employees;
+	
+
+
 	public Bank() {
 		
 	}
@@ -61,6 +70,14 @@ public class Bank {
 
 	public void setBankAddress(BankAddress bankAddress) {
 		this.bankAddress = bankAddress;
+	}
+	
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
 	}
 
 	@Override

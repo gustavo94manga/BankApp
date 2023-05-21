@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Employee {
@@ -25,6 +27,10 @@ public class Employee {
 	
 	@Column(name = "employee_number")
 	private int employeeNumber;
+	
+	@ManyToOne
+	@JoinColumn(name = "bank_id")
+	private Bank bank;
 	
 	public Employee() {
 		
@@ -68,6 +74,14 @@ public class Employee {
 
 	public void setEmployeeNumber(int employeeNumber) {
 		this.employeeNumber = employeeNumber;
+	}
+
+	public Bank getBank() {
+		return bank;
+	}
+
+	public void setBank(Bank bank) {
+		this.bank = bank;
 	}
 
 	@Override
