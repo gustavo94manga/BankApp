@@ -78,6 +78,15 @@ class UserTest {
 		assertNotNull(user.getBanks());
 		assertFalse(user.getBanks().isEmpty());
 	}
+	
+	@Test
+	void user_To_Account_OTM() {
+		assertNotNull(user);
+		assertNotNull(user.getUserAccounts());
+		assertFalse(user.getUserAccounts().isEmpty());
+	}
+	
+	
 
 
 }

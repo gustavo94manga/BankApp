@@ -70,6 +70,12 @@ class TransactionTest {
 		assertEquals(1, transaction.getTransactionType().getId());
 	}
 	
+	@Test
+	void transaction_MTM_account() {
+		assertNotNull(transaction);
+		assertNotNull(transaction.getAccounts());
+		assertFalse(transaction.getUsers().isEmpty());
+	}
 	
 	
 	
