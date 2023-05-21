@@ -48,6 +48,16 @@ class EmployeeTest {
 		assertEquals("Manager", employee.getRole());
 		
 	}
-	//Employee test
+	
+	@Test
+	void test_Employee_To_Bank_MTO() {
+		assertNotNull(employee);
+		assertNotNull(employee.getBank());
+		assertEquals("Chase", employee.getBank().getName());
+		assertEquals(1, employee.getBank().getId());
+		
+	}
+	
+
 
 }

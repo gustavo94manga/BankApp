@@ -60,6 +60,12 @@ class BankTest {
 		assertEquals(1, bank.getBankAddress().getId());
 	}
 	
+	@Test
+	void bank_OTM_employee() {
+		assertNotNull(bank);
+		assertFalse(bank.getEmployees().isEmpty());
+	}
+	
 	
 
 }
