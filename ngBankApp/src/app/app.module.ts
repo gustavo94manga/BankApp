@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BankComponent } from './components/bank/bank.component';
 import { LoanComponent } from './components/loan/loan.component';
-import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { UserAddressComponent } from './components/user-address/user-address.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { TransactionTypeComponent } from './components/transaction-type/transaction-type.component';
@@ -16,14 +15,14 @@ import { BankAddressComponent } from './components/bank-address/bank-address.com
 import { EmployeeComponent } from './components/employee/employee.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserAccountComponent } from './components/user-account/user-account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BankComponent,
     LoanComponent,
-    UserDetailComponent,
     UserAddressComponent,
     TransactionComponent,
     TransactionTypeComponent,
@@ -31,15 +30,17 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     BankAddressComponent,
     EmployeeComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserAccountComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
