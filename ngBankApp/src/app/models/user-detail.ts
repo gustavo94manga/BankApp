@@ -8,11 +8,11 @@ export class UserDetail {
     id: number = 0,
     firstName: string = '',
     lastName: string = '',
-    dateOfBirth: string = '', ) {
-      this.id = id;
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.dateOfBirth = dateOfBirth;
+    dateOfBirth: string = ''
+  ) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.dateOfBirth = dateOfBirth;
   }
-
 }
