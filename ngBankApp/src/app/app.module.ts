@@ -10,6 +10,8 @@ import { LoanComponent } from './components/loan/loan.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { UserAddressComponent } from './components/user-address/user-address.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
+import { TransactionTypeComponent } from './components/transaction-type/transaction-type.component';
+import { AccountComponent } from './components/account/account.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { TransactionComponent } from './components/transaction/transaction.compo
     LoanComponent,
     UserDetailComponent,
     UserAddressComponent,
-    TransactionComponent
+    TransactionComponent,
+    TransactionTypeComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
