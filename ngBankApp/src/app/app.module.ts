@@ -12,6 +12,8 @@ import { UserAddressComponent } from './components/user-address/user-address.com
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { TransactionTypeComponent } from './components/transaction-type/transaction-type.component';
 import { AccountComponent } from './components/account/account.component';
+import { BankAddressComponent } from './components/bank-address/bank-address.component';
+import { EmployeeComponent } from './components/employee/employee.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { AccountComponent } from './components/account/account.component';
     UserAddressComponent,
     TransactionComponent,
     TransactionTypeComponent,
-    AccountComponent
+    AccountComponent,
+    BankAddressComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
