@@ -3,6 +3,7 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable, catchError, throwError, tap } from 'rxjs';
 import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
+import { Buffer } from 'buffer';
 
 @Injectable({
   providedIn: 'root',

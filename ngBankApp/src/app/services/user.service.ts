@@ -11,7 +11,9 @@ import { AuthService } from './auth.service';
 export class UserService {
   private url = environment.baseUrl;
   @Output() refreshUsers: EventEmitter<any> = new EventEmitter();
+
   constructor(private http: HttpClient, private auth: AuthService) {}
+
   getHttpOptions() {
     // console.log(this.auth.getCredentials());
 

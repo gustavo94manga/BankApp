@@ -10,5 +10,5 @@ import com.bankapp.service.AuthService;
 @CrossOrigin({"*", "http://localhost/"})
 public class AuthController {
   @Autowired
-  private AuthService authService;
+  private AuthService authService; 
 }
