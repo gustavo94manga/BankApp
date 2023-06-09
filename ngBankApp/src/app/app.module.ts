@@ -17,6 +17,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserAccountComponent } from './components/user-account/user-account.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { UserAccountComponent } from './components/user-account/user-account.com
     HomeComponent,
     NavbarComponent,
     UserAccountComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
