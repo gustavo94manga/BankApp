@@ -18,6 +18,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserAccountComponent } from './components/user-account/user-account.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { RegistrationComponent } from './components/registration/registration.co
     FormsModule,
     HttpClientModule,
     NgbModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
