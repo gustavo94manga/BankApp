@@ -3,14 +3,32 @@ package com.bankapp.service;
 import java.util.Random;
 import java.util.regex.Pattern;
 
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.bankapp.entities.User;
+import com.bankapp.repository.UserRepository;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
 	
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private UserRepository userRepo;
+    
+    public RegistrationServiceImpl(UserRepository userRepository) {
+    	this.userRepo = userRepo;
+    }
 
+    @Override
+    public void register(String username, String password) {
+    	User user = new User();
+    	user.setUsername(username);
+    	String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+    	user.setPassword(hashedPassword); //set the hashed password
+    	userRepo.saveAndFlush(user);
+    	
+    }
 
 	@Override
 	public boolean isValidEmail(String email) {
@@ -40,5 +58,6 @@ public class RegistrationServiceImpl implements RegistrationService {
 	 public String hashPassword(String password) {
 	        return passwordEncoder.encode(password);
 	    }
+
 
 }
