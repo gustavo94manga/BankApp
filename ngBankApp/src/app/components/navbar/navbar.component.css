@@ -1,4 +1,24 @@
+nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background-color: #eaeaea;
+  transition: top 500ms ease-in-out;
+}
+
 .navbar {
-  position: relative;
-  z-index: 1000;
+  background-color: #333; /* Change the background color */
+}
+
+.navbar-nav .nav-link {
+  color: #fff; /* Change the link color */
+  font-weight: bold; /* Add font weight */
+  transition: color 0.3s ease; /* Add a smooth color transition */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffc107; /* Change the link color on hover */
 }
