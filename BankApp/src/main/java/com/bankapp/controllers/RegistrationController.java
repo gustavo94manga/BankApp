@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.bankapp.entities.User;
+import com.bankapp.repository.UserRepository;
 import com.bankapp.service.RegistrationService;
 
 @RestController
@@ -19,6 +20,7 @@ import com.bankapp.service.RegistrationService;
 public class RegistrationController {
 	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	private RegistrationService registrationService;
+	private UserRepository userRepo;
 	
 	 @Autowired
 	    public RegistrationController(RegistrationService registrationService) {
@@ -26,11 +28,11 @@ public class RegistrationController {
 	    }
 
 	
-	@PostMapping("/register")
-	public void Register(@RequestBody User user) {
-		 String hashedPassword = passwordEncoder.encode(user.getPassword());
-		    user.setPassword(hashedPassword);
-	}
+//	@PostMapping("/register")
+//	public void Register(@RequestBody User user) {
+//		 String hashedPassword = passwordEncoder.encode(user.getPassword());
+//		    user.setPassword(hashedPassword);
+//	}
 	
 	  @PostMapping("/register")
 	    public void register(@RequestBody User user) {
@@ -40,8 +42,9 @@ public class RegistrationController {
 	        }
 	        String hashedPassword = registrationService.hashPassword(user.getPassword());
 	        user.setPassword(hashedPassword);
-	        String mfaCode = registrationService.generateMfaCode();
-	        // store user and mfaCode in database, send mfaCode to user's email...
+	        // store user and mfaCode in database
+	        userRepo.saveAndFlush(user);
+	        
 	    }
 
 }

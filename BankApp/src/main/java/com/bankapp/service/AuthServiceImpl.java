@@ -1,7 +1,10 @@
 package com.bankapp.service;
 
+import org.springframework.stereotype.Service;
+
 import com.bankapp.entities.User;
 
+@Service
 public class AuthServiceImpl implements AuthService {
 
 	@Override

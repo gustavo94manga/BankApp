@@ -19,7 +19,7 @@ export class RegistrationComponent {
 
   onSubmit(): void {
     if (this.registrationForm.valid) {
-      this.http.post('http://localhost:8088/api/regiser', this.registrationForm.value).subscribe({
+      this.http.post('http://localhost:8088/api/register', this.registrationForm.value).subscribe({
         next: (response) => console.log(response),
         error: (error) => console.log(error)
       });

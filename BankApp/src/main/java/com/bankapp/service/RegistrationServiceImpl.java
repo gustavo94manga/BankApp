@@ -4,7 +4,9 @@ import java.util.Random;
 import java.util.regex.Pattern;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RegistrationServiceImpl implements RegistrationService {
 	
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
