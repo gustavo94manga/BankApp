@@ -5,4 +5,5 @@ public interface RegistrationService {
 	  public boolean isValidPassword(String password);
 	  public String generateMfaCode();
 	  String hashPassword(String password);
+	  void register(String username, String password);
 }

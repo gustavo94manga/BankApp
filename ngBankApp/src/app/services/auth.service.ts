@@ -12,7 +12,9 @@ export class AuthService {
   private url = environment.baseUrl;
 
   @Output() getLoggedIn: EventEmitter<any> = new EventEmitter();
+
   constructor(private http: HttpClient) {}
+
   register(user: User): Observable<User> {
     // Create POST request to register a new account
     return this.http.post<User>(this.url + 'register', user).pipe(

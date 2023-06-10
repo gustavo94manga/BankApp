@@ -1,7 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { catchError, throwError } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-registration',
@@ -9,26 +12,35 @@ import { catchError, throwError } from 'rxjs';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
-  constructor(private http: HttpClient){}
+  registerForm: FormGroup;
+  user: User = new User();
 
-  registrationForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-  });
-
-
-  onSubmit(): void {
-    if (this.registrationForm.valid) {
-      this.http.post('http://localhost:8088/api/register', this.registrationForm.value).subscribe({
-        next: (response) => console.log(response),
-        error: (error) => console.log(error)
-      });
-    } else {
-      console.log('Form is not valid');
-    }
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) {
+    this.registerForm = this.formBuilder.group({
+      username: '',
+      password: ''
+    });
   }
 
+  register() {
+    const username = this.registerForm.get('username')?.value;
+    const password = this.registerForm.get('password')?.value;
 
-
-
+    this.http.post('/register', { username, password })
+      .pipe(
+        catchError(error => {
+          console.error('Registration failed:', error);
+          return of(null);
+        })
+      )
+      .subscribe(response => {
+        if (response) {
+          this.router.navigate(['/login']);
+        }
+      });
+  }
 }
