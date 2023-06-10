@@ -7,6 +7,5 @@ import com.bankapp.entities.User;
 
 public interface AccountRepository extends JpaRepository<User, Integer> {
 	User findByUsername(String username);
-	Account findAccountById_Username(int id, String username);
 }
 

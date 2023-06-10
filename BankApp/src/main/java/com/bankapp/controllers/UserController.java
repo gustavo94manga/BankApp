@@ -29,10 +29,10 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("users")
-	public List<User> listAllUsers() {
-		return userService.listAllUsers();
-	}
+//	@GetMapping("users")
+//	public List<User> listAllUsers() {
+//		return userService.listAllUsers();
+//	}
 	
 	@GetMapping("users")
 	public Optional<User> getUserById(Principal principal, HttpServletRequest req,
