@@ -1,5 +1,8 @@
 package com.bankapp.controllers;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -7,22 +10,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bankapp.entities.User;
-import com.bankapp.service.RegistrationServiceImpl;
+import com.bankapp.entities.UserAddress;
+import com.bankapp.entities.UserDetail;
+import com.bankapp.repository.UserAddressRepository;
+import com.bankapp.repository.UserDetailRepository;
+import com.bankapp.service.AuthService;
 
 @RestController
 @RequestMapping("api")
 @CrossOrigin({"*", "http://localhost/"})
 public class RegistrationController {
 	
-	private RegistrationServiceImpl registrationService;
+	@Autowired
+	private AuthService authService;
 	
-	public RegistrationController(RegistrationServiceImpl registratoinService) {
-		this.registrationService = registrationService;
-	}
+	@Autowired
+	private UserAddressRepository userAddressRepository;  
+	
+	@Autowired
+	private UserDetailRepository userDetailRepository;
 	
 	@PostMapping("register")
-	public void register(@RequestBody User user) {
-		registrationService.register(user.getUsername(), user.getPassword());
+	public User register(@RequestBody User user, HttpServletResponse res) {
+		if (user == null) {
+			res.setStatus(400);
+			return null;
+		}
+		UserAddress userAddress = user.getUserAddress();
+		if (userAddress != null) {
+			userAddress = userAddressRepository.save(userAddress);  // Save UserAddress to the database
+			user.setUserAddress(userAddress);
+		}
+		UserDetail userDetail = user.getUserDetail();
+		if(userDetail != null) {
+			userDetail = userDetailRepository.save(userDetail);
+			user.setUserDetail(userDetail);
+		}
+		user = authService.register(user);
+		return user;
 	}
 	    
 

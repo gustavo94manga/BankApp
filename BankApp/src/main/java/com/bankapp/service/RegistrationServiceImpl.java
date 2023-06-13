@@ -26,6 +26,8 @@ public class RegistrationServiceImpl implements RegistrationService {
     	user.setUsername(username);
     	String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
     	user.setPassword(hashedPassword); //set the hashed password
+    	user.setEmail(user.getEmail());
+    	user.setPhone(user.getPhone());
     	userRepo.saveAndFlush(user);
     	
     }
