@@ -1,12 +1,12 @@
 import { User } from "./user";
 
 export class UserAddress {
-  id: number;
-  address: string;
-  city: string;
-  state: string;
-  zipCode: string;
-  user: User | null;
+  id?: number;
+  address?: string;
+  city?: string;
+  state?: string;
+  zipCode?: string;
+
 
   constructor(
     id: number = 0,
@@ -14,13 +14,12 @@ export class UserAddress {
     city: string = '',
     state: string = '',
     zipCode: string = '',
-    user: User | null = null,
+
   ){
     this.id = id;
     this.address = address;
     this.city = city;
     this.state = state;
     this.zipCode = zipCode;
-    this.user = user;
   }
 }

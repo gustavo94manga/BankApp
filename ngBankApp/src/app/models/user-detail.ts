@@ -1,8 +1,8 @@
 export class UserDetail {
-  id: number;
-  firstName: string;
-  lastName: string;
-  dateOfBirth: string;
+  id?: number | null;
+  firstName: string | null;
+  lastName: string | null;
+  dateOfBirth: string | null;
 
   constructor(
     id: number = 0,

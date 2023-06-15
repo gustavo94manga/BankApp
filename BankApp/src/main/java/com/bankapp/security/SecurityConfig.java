@@ -1,5 +1,7 @@
 package com.bankapp.security;
 
+import java.util.Arrays;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 public class SecurityConfig {
@@ -34,8 +39,10 @@ public class SecurityConfig {
         .antMatchers("/api/**").authenticated() // Requests for our REST API must be authorized.
         .anyRequest().permitAll()               // All other requests are allowed without authentication.
         .and()
-        .httpBasic();                           // Use HTTP Basic Authentication
-
+        .httpBasic()                           // Use HTTP Basic Authentication                 
+        .and()
+        .cors();
+        
         http
         .sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -55,6 +62,15 @@ public class SecurityConfig {
         .usersByUsernameQuery(userQuery)
         .authoritiesByUsernameQuery(authQuery)
         .passwordEncoder(encoder);
+    }
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+    	CorsConfiguration configuration = new CorsConfiguration();
+    	configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+    	configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+    	UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    	source.registerCorsConfiguration("/**", configuration);
+    	return source;
     }
     
 }

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable, catchError, throwError, tap } from 'rxjs';
 import { User } from '../models/user';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.development';
 import { Buffer } from 'buffer';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class AuthService {
 
   register(user: User): Observable<User> {
     // Create POST request to register a new account
-    return this.http.post<User>(this.url + 'register', user).pipe(
+    return this.http.post<User>(this.url + 'api/register', user).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

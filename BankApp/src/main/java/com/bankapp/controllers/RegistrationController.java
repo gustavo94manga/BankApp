@@ -18,7 +18,8 @@ import com.bankapp.service.AuthService;
 
 @RestController
 @RequestMapping("api")
-@CrossOrigin({"*", "http://localhost/"})
+//@CrossOrigin({"*", "http://localhost/"})
+@CrossOrigin(origins = "http://localhost:4200")
 public class RegistrationController {
 	
 	@Autowired

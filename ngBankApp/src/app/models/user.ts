@@ -5,19 +5,19 @@ import { UserAddress } from "./user-address";
 import { UserDetail } from "./user-detail";
 
 export class User {
-  id: number;
+  id?: number;
   email: string;
   username: string;
   password: string;
   phone: string;
-  lastLogin: string;
+  lastLogin?: string;
   enabled: boolean;
-  userAccounts: any[] | null;
+  userAccounts?: any[] | null;
   userDetail: UserDetail | null;
   userAddress: UserAddress | null;
-  transactions: Transaction[] | null;
-  banks: Bank[] | null;
-  loans: Loan[] | null;
+  transactions?: Transaction[] | null;
+  banks?: Bank[] | null;
+  loans?: Loan[] | null;
 
   constructor(
     id: number = 0,
