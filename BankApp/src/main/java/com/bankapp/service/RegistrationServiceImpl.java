@@ -17,7 +17,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     private UserRepository userRepo;
     
     public RegistrationServiceImpl(UserRepository userRepository) {
-    	this.userRepo = userRepo;
+    	this.userRepo = userRepository;
     }
 
     @Override

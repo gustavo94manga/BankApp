@@ -20,11 +20,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @Configuration
 public class SecurityConfig {
 
-    // this you get for free when you configure the db connection in application.properties file
     @Autowired
     private DataSource dataSource;
 
-    // this bean is created in the application starter class if you're looking for it
     @Autowired
     private PasswordEncoder encoder;
 	
@@ -33,15 +31,14 @@ public class SecurityConfig {
         http
         .csrf().disable()
         .authorizeRequests()
-        .antMatchers(HttpMethod.OPTIONS, "/api/**").permitAll() // For CORS, the preflight request
-        .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()  
-        .antMatchers(HttpMethod.POST, "/api/register").permitAll()// will hit the OPTIONS on the route
-        .antMatchers("/api/**").authenticated() // Requests for our REST API must be authorized.
-        .anyRequest().permitAll()               // All other requests are allowed without authentication.
+        .antMatchers(HttpMethod.OPTIONS, "/api/**").permitAll()
+        .antMatchers(HttpMethod.POST, "/api/register").permitAll()
+        .antMatchers("/api/**").authenticated() 
         .and()
-        .httpBasic()                           // Use HTTP Basic Authentication                 
+        .httpBasic() 
         .and()
-        .cors();
+        .cors()
+        .configurationSource(corsConfigurationSource());
         
         http
         .sessionManagement()
@@ -52,9 +49,7 @@ public class SecurityConfig {
     
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // Check if username/password are valid, and user currently allowed to authenticate
         String userQuery = "SELECT username, password, enabled FROM user WHERE username=?";
-        // Check what authorities the user has
         String authQuery = "SELECT username, role FROM user WHERE username=?";
         auth
         .jdbcAuthentication()
@@ -63,14 +58,16 @@ public class SecurityConfig {
         .authoritiesByUsernameQuery(authQuery)
         .passwordEncoder(encoder);
     }
+
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
-    	CorsConfiguration configuration = new CorsConfiguration();
-    	configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
-    	configuration.setAllowedMethods(Arrays.asList("GET","POST"));
-    	UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    	source.registerCorsConfiguration("/**", configuration);
-    	return source;
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200")); 
+        configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE", "OPTIONS", "HEAD"));
+        configuration.setAllowedHeaders(Arrays.asList("*")); // This allows all headers.
+        configuration.setAllowCredentials(true); 
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
-    
 }

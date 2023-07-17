@@ -68,10 +68,11 @@ export class RegistrationComponent {
 
   register(user: User): void {
 
-    console.log('Registering user:');
+    console.log('Registering user********:');
 
     this.auth.register(user).subscribe({
       next: (registeredUser) => {
+        console.log('Successfully registered');
         this.auth.login(user.username, user.password).subscribe({
           next: (loggedInUser) => {
             console.log(loggedInUser);

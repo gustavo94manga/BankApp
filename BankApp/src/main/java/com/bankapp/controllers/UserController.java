@@ -23,7 +23,8 @@ import com.bankapp.service.UserService;
 
 @RestController
 @RequestMapping("api")
-@CrossOrigin({"*", "http://localhost/"})
+//@CrossOrigin({"*", "http://localhost/"})
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 	
 	@Autowired
