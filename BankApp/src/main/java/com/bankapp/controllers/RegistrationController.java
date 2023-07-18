@@ -63,7 +63,7 @@ public class RegistrationController {
 		}
 		return authService.getUserByUsername(principal.getName());
 		
-	}
+	} 
 	    
 
 }

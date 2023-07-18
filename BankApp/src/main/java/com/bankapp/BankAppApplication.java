@@ -13,9 +13,9 @@ public class BankAppApplication {
 		SpringApplication.run(BankAppApplication.class, args);
 		
 	}
-	@Bean
-	public PasswordEncoder configurePasswordEncoder() {
-	   return new BCryptPasswordEncoder();
-	}
+//	@Bean
+//	public PasswordEncoder configurePasswordEncoder() {
+//	   return new BCryptPasswordEncoder();
+//	}
 
 }
